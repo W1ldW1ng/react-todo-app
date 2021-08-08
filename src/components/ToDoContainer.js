@@ -1,4 +1,5 @@
 import React from "react";
+import { v4 as uuidv4 } from "uuid";
 import TodosList from "./TodosList";
 import Header from "./Header";
 import InputTodo from "./InputTodo";
@@ -7,17 +8,17 @@ class TodoContainer extends React.Component {
     state = {
         todos: [
             {
-                id: 1,
+                id: uuidv4(),
                 title: "Setup new Rocket League Team",
                 completed: true,
             },
             {
-                id: 2,
+                id: uuidv4(),
                 title: "Onboard Burrows onto low level team ",
                 completed: false
             },
             {
-                id: 3,
+                id: uuidv4(),
                 title: "Kick Burrows off low level team because he's shit",
                 completed: false
             },
@@ -50,7 +51,7 @@ class TodoContainer extends React.Component {
     //input todo handlet
     addTodoItem = title => {
         const newTodo = {
-            id: 4,
+            id: uuidv4(),
             title: title,
             completed: false
         };
