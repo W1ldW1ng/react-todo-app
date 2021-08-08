@@ -4,7 +4,9 @@ import ReactDOM from "react-dom"
 
 //component files
 import TodoContainer from "./components/ToDoContainer"
-//end of componet files
+
+//stylesheet
+import "./App.css"
 
 //virtualDOM
 ReactDOM.render(
