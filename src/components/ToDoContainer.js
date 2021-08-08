@@ -8,7 +8,7 @@ class TodoContainer extends React.Component {
             {
                 id: 1,
                 title: "Setup new Rocket League Team",
-                completed: true
+                completed: true,
             },
             {
                 id: 2,
@@ -22,6 +22,7 @@ class TodoContainer extends React.Component {
             },
         ]
     };
+    // checkbox handler
     handleChange = (id) => {
         this.setState(prevState => ({
             todos: prevState.todos.map(todo => {
@@ -35,11 +36,20 @@ class TodoContainer extends React.Component {
             })
         }));
     };
+    // delete button handler
+    delTodo = id => {
+        console.log("deleted", id);
+    };
+    //todo list render
     render() {
         return (
             <div>
                 <Header/>
-                <TodosList todos={this.state.todos} handleChangeProps={this.handleChange} />
+                <TodosList 
+                    todos={this.state.todos} 
+                    handleChangeProps={this.handleChange} 
+                    deleteTodoProps={this.delTodo}
+                />
             </div>
         )
     }
