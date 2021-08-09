@@ -48,7 +48,7 @@ class TodoContainer extends React.Component {
             ]
         });
     };
-    //input todo handlet
+    //input todo handler
     addTodoItem = title => {
         const newTodo = {
             id: uuidv4(),
@@ -59,6 +59,17 @@ class TodoContainer extends React.Component {
             todos: [...this.state.todos, newTodo]
         });
     };
+    //edit mode handler
+    setUpdate = (updatedTitle, id) => {
+        this.setState({
+            todos: this.state.todos.map(todo => {
+                if (todo.id === id) {
+                    todo.title = updatedTitle
+                }
+                return todo
+            }),
+        })
+    }
     //todo list render
     render() {
         return (
@@ -72,6 +83,7 @@ class TodoContainer extends React.Component {
                         todos={this.state.todos} 
                         handleChangeProps={this.handleChange} 
                         deleteTodoProps={this.delTodo}
+                        setUpdate={this.setUpdate}
                     />
                 </div>
             </div>
