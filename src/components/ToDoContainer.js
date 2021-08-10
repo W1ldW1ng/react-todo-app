@@ -60,6 +60,13 @@ class TodoContainer extends React.Component {
             .then(response => response.json())
             .then(data => this.setState({todos: data}));
     }
+    //local storage handler
+    componentDidUpdate(prevProps, prevState) {
+        if(prevState.todos !== this.state.todos) {
+            const temp = JSON.stringify(this.state.todos)
+            localStorage.setItem("todos", temp)
+        }
+    }
     //todo list render
     render() {
         return (
