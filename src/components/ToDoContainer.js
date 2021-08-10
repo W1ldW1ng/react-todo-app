@@ -6,23 +6,7 @@ import InputTodo from "./InputTodo";
 
 class TodoContainer extends React.Component {
     state = {
-        todos: [
-            {
-                id: uuidv4(),
-                title: "Setup new Rocket League Team",
-                completed: true,
-            },
-            {
-                id: uuidv4(),
-                title: "Onboard Burrows onto low level team ",
-                completed: false
-            },
-            {
-                id: uuidv4(),
-                title: "Kick Burrows off low level team because he's shit",
-                completed: false
-            },
-        ]
+        todos: [],
     };
     // checkbox handler
     handleChange = (id) => {
@@ -69,6 +53,12 @@ class TodoContainer extends React.Component {
                 return todo
             }),
         })
+    }
+    //mount handler
+    componentDidMount() {
+        fetch("https://jsonplaceholder.typicode.com/todos?_limit=25")
+            .then(response => response.json())
+            .then(data => this.setState({todos: data}));
     }
     //todo list render
     render() {
